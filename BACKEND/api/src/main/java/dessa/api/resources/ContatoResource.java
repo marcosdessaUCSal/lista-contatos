@@ -7,6 +7,7 @@ import dessa.api.services.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +30,15 @@ public class ContatoResource {
         return ResponseEntity.ok().body(listaDTO);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ContatoDTO> findById(@PathVariable("id") Integer id) {
+        Contato contato = contatoService.findById(id);
+        return ResponseEntity.ok().body(new ContatoDTO(contato));
+    }
+
     @GetMapping(value = "/tipostel")
     public ResponseEntity<List<TipoTelDTO>> tiposTel() {
         return ResponseEntity.ok().body(contatoService.tiposTel());
     }
+
 }

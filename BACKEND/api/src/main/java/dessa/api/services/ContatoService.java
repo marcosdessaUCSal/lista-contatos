@@ -4,11 +4,13 @@ import dessa.api.domain.Contato;
 import dessa.api.domain.dtos.TipoTelDTO;
 import dessa.api.domain.enums.TipoTel;
 import dessa.api.repositories.ContatoRepository;
+import dessa.api.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContatoService {
@@ -22,5 +24,12 @@ public class ContatoService {
 
     public List<TipoTelDTO> tiposTel() {
         return TipoTel.getAllTipoTelDTO();
+    }
+
+    public Contato findById(Integer id) {
+        Optional<Contato> contato = contatoRepository.findById(id);
+        return contato.orElseThrow(
+                () -> new ObjectNotFoundException("Contato não encontrado para o id " + id)
+        );
     }
 }
