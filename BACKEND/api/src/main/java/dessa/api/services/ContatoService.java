@@ -38,4 +38,11 @@ public class ContatoService {
         Contato contato = new Contato(contatoDTO, false);
         return contatoRepository.save(contato);
     }
+
+    public Contato update(ContatoDTO contatoDTO) {
+        Integer id = contatoDTO.getId();
+        Contato oldContato = this.findById(id);
+        Contato newContato = new Contato(contatoDTO, true);
+        return contatoRepository.save(newContato);
+    }
 }

@@ -47,4 +47,10 @@ public class ContatoResource {
         return ResponseEntity.ok().body(new ContatoDTO(contato));
     }
 
+    @PutMapping
+    public ResponseEntity<ContatoDTO> update(@Valid @RequestBody ContatoDTO contatoDTO) {
+        Contato contato = contatoService.update(contatoDTO);
+        return ResponseEntity.ok().body(new ContatoDTO(contato));
+    }
+
 }
