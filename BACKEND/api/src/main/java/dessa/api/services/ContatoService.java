@@ -1,6 +1,7 @@
 package dessa.api.services;
 
 import dessa.api.domain.Contato;
+import dessa.api.domain.dtos.ContatoDTO;
 import dessa.api.domain.dtos.TipoTelDTO;
 import dessa.api.domain.enums.TipoTel;
 import dessa.api.repositories.ContatoRepository;
@@ -31,5 +32,10 @@ public class ContatoService {
         return contato.orElseThrow(
                 () -> new ObjectNotFoundException("Contato não encontrado para o id " + id)
         );
+    }
+
+    public Contato create(ContatoDTO contatoDTO) {
+        Contato contato = new Contato(contatoDTO, false);
+        return contatoRepository.save(contato);
     }
 }

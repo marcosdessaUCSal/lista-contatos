@@ -4,13 +4,13 @@ import dessa.api.domain.Contato;
 import dessa.api.domain.dtos.ContatoDTO;
 import dessa.api.domain.dtos.TipoTelDTO;
 import dessa.api.services.ContatoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,6 +39,12 @@ public class ContatoResource {
     @GetMapping(value = "/tipostel")
     public ResponseEntity<List<TipoTelDTO>> tiposTel() {
         return ResponseEntity.ok().body(contatoService.tiposTel());
+    }
+
+    @PostMapping
+    public ResponseEntity<ContatoDTO> create(@Valid @RequestBody ContatoDTO contatoDTO) {
+        Contato contato = contatoService.create(contatoDTO);
+        return ResponseEntity.ok().body(new ContatoDTO(contato));
     }
 
 }

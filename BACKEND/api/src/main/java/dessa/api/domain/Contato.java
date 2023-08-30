@@ -1,6 +1,7 @@
 package dessa.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import dessa.api.domain.dtos.ContatoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,6 +34,19 @@ public class Contato implements Serializable {
         this.tel = tel;
         this.codTipoTel = codTipoTel;
         this.email = email;
+    }
+
+    // Construtor para entrada em DTO
+    public Contato(ContatoDTO contatoDTO, boolean edicao) {
+        this.id = contatoDTO.getId();
+        this.nome = contatoDTO.getNome();
+        this.tel = contatoDTO.getTel();
+        this.codTipoTel = contatoDTO.getCodTipoTel();
+        this.email = contatoDTO.getEmail();
+        if (edicao) {
+            this.id = contatoDTO.getId();
+            this.dataModificacao = LocalDate.now();
+        }
     }
 
     // Getters
