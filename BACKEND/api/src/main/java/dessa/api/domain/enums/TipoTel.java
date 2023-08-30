@@ -1,5 +1,10 @@
 package dessa.api.domain.enums;
 
+import dessa.api.domain.dtos.TipoTelDTO;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public enum TipoTel {
 
     FIXO(0, "FIXO"), CELULAR(1, "CELULAR");
@@ -31,5 +36,14 @@ public enum TipoTel {
             }
         }
         throw new IllegalArgumentException("Tipo de telefone inválido");
+    }
+
+    public static List<TipoTelDTO> getAllTipoTelDTO() {
+        var lista = new ArrayList<TipoTelDTO>();
+        for (TipoTel tipo : TipoTel.values()) {
+            var dto = new TipoTelDTO(tipo.getCodigo(), tipo.descricao);
+            lista.add(dto);
+        }
+        return lista;
     }
 }

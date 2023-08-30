@@ -2,6 +2,7 @@ package dessa.api.resources;
 
 import dessa.api.domain.Contato;
 import dessa.api.domain.dtos.ContatoDTO;
+import dessa.api.domain.dtos.TipoTelDTO;
 import dessa.api.services.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,5 +27,10 @@ public class ContatoResource {
                 contato -> new ContatoDTO(contato)
         ).collect(Collectors.toList());
         return ResponseEntity.ok().body(listaDTO);
+    }
+
+    @GetMapping(value = "/tipostel")
+    public ResponseEntity<List<TipoTelDTO>> tiposTel() {
+        return ResponseEntity.ok().body(contatoService.tiposTel());
     }
 }
