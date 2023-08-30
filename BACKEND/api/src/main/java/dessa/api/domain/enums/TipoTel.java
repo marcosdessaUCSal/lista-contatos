@@ -3,7 +3,9 @@ package dessa.api.domain.enums;
 import dessa.api.domain.dtos.TipoTelDTO;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public enum TipoTel {
 
@@ -45,5 +47,13 @@ public enum TipoTel {
             lista.add(dto);
         }
         return lista;
+    }
+
+    public static Set<Integer> getAllCodigos() {
+        var codigos = new HashSet<Integer>();
+        for (TipoTel tipo : TipoTel.values()) {
+            codigos.add(tipo.codigo);
+        }
+        return codigos;
     }
 }
