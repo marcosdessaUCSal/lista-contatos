@@ -50,6 +50,11 @@ public class ContatoService {
         return contatoRepository.save(newContato);
     }
 
+    public void delete(Integer id) {
+        Contato contato = this.findById(id);
+        contatoRepository.delete(contato);
+    }
+
 
 
     private void validaCodigoTipoTel(Integer cod) {

@@ -53,4 +53,10 @@ public class ContatoResource {
         return ResponseEntity.ok().body(new ContatoDTO(contato));
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity delete(@PathVariable("id") Integer id) {
+        contatoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
