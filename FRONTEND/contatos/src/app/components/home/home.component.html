@@ -1,0 +1,50 @@
+<mat-drawer-container class="container" hasBackdrop="false">
+
+    <p class="mat-elevation-z3">
+        <mat-toolbar color="primary">
+            <button (click)="drawer.toggle()" mat-icon-button class="menu" aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Meus Contatos</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>share</mat-icon>
+            </button>
+            <!-- <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button> -->
+        </mat-toolbar>
+    </p>
+
+    <mat-drawer #drawer mode="side">
+        <img src="assets/genetic-algorithm-svgrepo-com.svg" alt="">
+        <mat-nav-list class="nav-list">
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="sobre">
+                <i class="material-icons">info_outline</i>
+                Sobre
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="contatos">
+                <i class="material-icons">contacts</i>
+                Contatos
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="links">
+                <i class="material-icons">connected_tv</i>
+                Links
+            </a>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <div class="sidenav-content">
+        <!-- <button class="menu mat-elevation-z8 btn-up" (click)="drawer.toggle()" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button> -->
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>
