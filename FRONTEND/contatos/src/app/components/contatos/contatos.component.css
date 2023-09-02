@@ -1,10 +1,15 @@
 .container {
     width: 90%;
     margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: aliceblue;
 }
 
 table {
     width: 100%;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
 }
 
 mat-form-field {
