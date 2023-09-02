@@ -16,8 +16,10 @@ import { MatListModule } from '@angular/material/list';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { LinksComponent } from './components/links/links.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatListModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
