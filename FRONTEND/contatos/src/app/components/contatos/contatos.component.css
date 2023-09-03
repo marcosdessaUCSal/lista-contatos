@@ -13,11 +13,11 @@ table {
 }
 
 mat-form-field {
-    width: 100%;
+    width: 40%;
 }
 
 button {
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 1rem;
 }
 
@@ -33,4 +33,23 @@ h1 {
 
 .delete {
     color: brown;
+}
+
+.direita {
+    text-align: right;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.c-header {
+    display: flex;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    padding: 0 8px;
+}
+
+.filtro {
+    width: 300px;
 }

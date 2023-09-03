@@ -2,45 +2,68 @@
     <h1>Uma tabelinha</h1>
 
     <div class="mat-elevation-z8">
+
+        <!-- Filtro para pesquisa -->
+        <div class="c-header">
+            <span>
+                <mat-form-field class="filtro">
+                    <mat-label>Filtro</mat-label>
+                    <input matInput (keyup)="filtrando($event)" placeholder="Escreva um nome" #input>
+                </mat-form-field>
+            </span>
+            <span class="spacer"></span>
+            <span>
+                <button routerLink="create" mat-stroked-button color="primary">Novo Contato</button>
+            </span>
+        </div>
+
+
+
         <table mat-table [dataSource]="dataSource">
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-
-            <!-- Position Column -->
+            <!-- Coluna Nome -->
             <ng-container matColumnDef="nome">
                 <th mat-header-cell *matHeaderCellDef> Nome </th>
                 <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
             </ng-container>
 
-            <!-- Name Column -->
+            <!-- Coluna Telefone-->
             <ng-container matColumnDef="tel">
                 <th mat-header-cell *matHeaderCellDef> Telefone </th>
                 <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
+            <!-- Coluna Tipo -->
             <ng-container matColumnDef="tipotel">
                 <th mat-header-cell *matHeaderCellDef> Tipo </th>
                 <td mat-cell *matCellDef="let element"> {{identificaCodTipoTel(element.codTipoTel)}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
+            <!-- Coluna E-mail -->
             <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef> E-mail </th>
                 <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
+            <!-- Coluna Criado em -->
             <ng-container matColumnDef="d_criacao">
                 <th mat-header-cell *matHeaderCellDef> Criado em </th>
                 <td mat-cell *matCellDef="let element"> {{element.dataCriacao}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
+            <!-- Coluna Modificado em -->
             <ng-container matColumnDef="d_modificacao">
                 <th mat-header-cell *matHeaderCellDef> Modificado em </th>
                 <td mat-cell *matCellDef="let element"> {{element.dataModificacao}} </td>
+            </ng-container>
+
+            <!-- Coluna Ações -->
+            <ng-container matColumnDef="acoes">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let element">
+                    <i (click)="algo()" class="material-icons edit">edit</i>
+                    <i class="material-icons delete">delete</i>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
