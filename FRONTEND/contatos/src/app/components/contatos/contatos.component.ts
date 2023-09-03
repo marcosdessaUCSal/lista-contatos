@@ -1,6 +1,9 @@
+import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
 
@@ -32,8 +35,16 @@ export class ContatosComponent implements OnInit, AfterViewInit {
 
 
   constructor(
-    private service: ContatoService
+    private service: ContatoService,
+    private router: Router,
+    public dialog: MatDialog
   ) { }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogNovoContatoComponent);
+    // this.router.navigate(['sobre']);
+  }
 
   ngOnInit(): void {
     this.service.findAll().subscribe(
@@ -76,6 +87,8 @@ export class ContatosComponent implements OnInit, AfterViewInit {
   algo() {
     alert('Algo aconteceu')
   }
+
+  
 
 
 }

@@ -19,5 +19,16 @@ export class ContatoService {
     return this.http.get<Contato[]>(`${API_CONFIG.baseUrl}/contatos`);
   }
 
+  salvarContato(contato: Contato): Observable<Contato> {
+    let obj = {
+      id: contato.id,
+      nome: contato.nome,
+      tel: contato.tel,
+      email: contato.email,
+      codTipoTel: contato.codTipoTel,
+    }
+    return this.http.post<Contato>(`${API_CONFIG.baseUrl}/contatos`, obj);
+  }
+
 
 }

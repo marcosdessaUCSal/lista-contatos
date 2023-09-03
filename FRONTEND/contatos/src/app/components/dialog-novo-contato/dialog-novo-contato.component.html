@@ -1,0 +1,54 @@
+<div class="container">
+    <form class="form mat-elevation-z4">
+
+        <h1>Inserindo um novo contato</h1>
+
+        <!-- <img src="assets/img/login-image.svg" alt="Help Desk - Dicas de um DEV"> -->
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input
+            [(ngModel)]="contato.nome"
+            name="nome"
+            matInput
+            placeholder="Ex. Albert Einstein">
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input
+            name="tel"
+            [(ngModel)]="contato.tel"
+            matInput
+            placeholder="Ex. 42679797">
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Tipo de Telefone</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let tipo of tipoTel" [value]="tipo.codigo"
+              (click)="escolherTipo(tipo.codigo)"
+              >
+                {{tipo.descricao}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input
+            name="email"
+            type="email"
+            matInput
+            placeholder="Ex. fulano@mail.com">
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <button [disabled]="!validaCampos()" (click)="salvarNovoContato()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Enviar</button>
+        <button (click)="cancelar()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Cancelar</button>
+
+    </form>
+
+</div>

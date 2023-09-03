@@ -22,6 +22,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
+import { DialogNovoContatoComponent } from './components/dialog-novo-contato/dialog-novo-contato.component';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     SobreComponent,
     ContatosComponent,
-    LinksComponent
+    LinksComponent,
+    DialogNovoContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,10 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    NgIf,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
