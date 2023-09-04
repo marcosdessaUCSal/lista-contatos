@@ -1,31 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatListModule } from '@angular/material/list';
-import { SobreComponent } from './components/sobre/sobre.component';
-import { ContatosComponent } from './components/contatos/contatos.component';
-import { LinksComponent } from './components/links/links.component';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { HttpClientModule } from '@angular/common/http';
-import { MatInputModule } from '@angular/material/input';
-import { DialogNovoContatoComponent } from './components/dialog-novo-contato/dialog-novo-contato.component';
-import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToastrModule } from 'ngx-toastr';
+import { ContatosComponent } from './components/contatos/contatos.component';
+import { DialogNovoContatoComponent } from './components/dialog-novo-contato/dialog-novo-contato.component';
+import { LinksComponent } from './components/links/links.component';
+import { SobreComponent } from './components/sobre/sobre.component';
 
 
 @NgModule({
@@ -57,7 +58,15 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     FormsModule,
     NgIf,
-    MatDialogModule
+    MatDialogModule,
+    // ngx-toastr
+    ToastrModule.forRoot(
+      {
+        timeOut: 4000,
+        closeButton: true,
+        progressBar: true
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

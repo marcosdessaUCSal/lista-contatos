@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
 import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contatos',
@@ -34,14 +35,18 @@ export class ContatosComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: ContatoService,
+    private toastr: ToastrService,
     public dialog: MatDialog
   ) { }
 
 
   openDialog(): void {
+    console.log('O toastr deveria funcionar agora')
+    this.toastr.success('Sucesso', 'Estou funcionando!');
     const dialogRef = this.dialog.open(DialogNovoContatoComponent);
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
+      this.toastr.success('Sucesso', 'Contato salvo com sucesso!');
       console.log('Rodei!!!!!')
     });
   }
@@ -85,7 +90,7 @@ export class ContatosComponent implements OnInit, AfterViewInit {
     alert('Algo aconteceu')
   }
 
-  
+
 
 
 }
