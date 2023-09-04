@@ -57,7 +57,7 @@ export class DialogNovoContatoComponent {
     });
 
     this.dialogRef.close();
-    this.router.navigate(['contatos']);
+    this.router.navigate(['contatos']); // Não funciona para dar refresh no componente!
   }
 
   validaCampos(): boolean {

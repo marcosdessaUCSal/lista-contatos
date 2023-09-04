@@ -1,11 +1,10 @@
-import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
+import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
 
 @Component({
   selector: 'app-contatos',
@@ -24,7 +23,6 @@ export class ContatosComponent implements OnInit, AfterViewInit {
   dataSourceWithPageSize = new MatTableDataSource<any>(this.ELEMENT_DATA);
 
   @ViewChild('paginator') paginator!: MatPaginator;
-  // @ViewChild('paginatorPageSize') paginatorPageSize!: MatPaginator;
 
   tipoTel = [
     { codigo: 0, descricao: 'FIXO' },
@@ -36,14 +34,16 @@ export class ContatosComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: ContatoService,
-    private router: Router,
     public dialog: MatDialog
   ) { }
 
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogNovoContatoComponent);
-    // this.router.navigate(['sobre']);
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+      console.log('Rodei!!!!!')
+    });
   }
 
   ngOnInit(): void {
@@ -51,16 +51,13 @@ export class ContatosComponent implements OnInit, AfterViewInit {
       resposta => {
         this.ELEMENT_DATA = resposta;
         this.dataSource = new MatTableDataSource<Contato>(this.ELEMENT_DATA);
-        // this.dataSourceWithPageSize = new MatTableDataSource(this.ELEMENT_DATA);
         this.dataSource.paginator = this.paginator;
       }
     );
-
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    // this.dataSourceWithPageSize.paginator = this.paginatorPageSize;
   }
 
 
