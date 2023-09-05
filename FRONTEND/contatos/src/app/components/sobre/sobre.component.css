@@ -2,7 +2,7 @@
     width: 50%;
     margin: 3rem auto;
     padding: 1rem;
-    background-color: lightgray;
+    background-color: rgb(223, 224, 238);
 }
 
 .imgjob {
@@ -24,5 +24,5 @@ h1 {
 }
 
 .cor {
-    background-color: rgb(232, 232, 215);
+    background-color: rgb(189, 191, 222);
 }

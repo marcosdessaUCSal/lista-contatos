@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
-import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
 import { DialogEditarContatoComponent } from '../dialog-editar-contato/dialog-editar-contato.component';
+import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
 
 @Component({
   selector: 'app-contatos',
@@ -16,8 +16,6 @@ import { DialogEditarContatoComponent } from '../dialog-editar-contato/dialog-ed
 
 
 export class ContatosComponent implements OnInit, AfterViewInit {
-
-  private editId: number = 0;
 
   ELEMENT_DATA: Contato[] = [];
   displayedColumns: string[] = ['nome', 'tel', 'tipotel', 'email', 'd_criacao', 'd_modificacao', 'acoes'];
@@ -49,8 +47,11 @@ export class ContatosComponent implements OnInit, AfterViewInit {
   }
 
   openDialogEditar(id: number): void {
-    this.editId = id;
-    const dialogRef = this.dialog.open(DialogEditarContatoComponent);
+    const dialogRef = this.dialog.open(DialogEditarContatoComponent, {
+      data: {
+        dataKey: {id: id}
+      }
+    });
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
     });

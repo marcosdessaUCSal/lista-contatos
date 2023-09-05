@@ -6,6 +6,11 @@
     flex: 1 1 auto;
 }
 
+.toolbar {
+    background-color: #3700b3;
+    color: white;
+}
+
 img {
     width: 100%;
     height: 7rem;
@@ -20,7 +25,13 @@ mat-drawer-content {
     align-items: flex-start;
 }
 
+a {
+    color: white;
+}
+
+
 .mat-drawer {
-    background-color: rgb(242, 236, 236);
+    /* color: #03dac6; */
+    background-color: rgb(223, 224, 238);
 }
 
