@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Contato } from 'src/app/models/Contato';
+import { TipoTel } from 'src/app/models/TipoTel';
 import { ContatoService } from 'src/app/services/contato.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { ContatoService } from 'src/app/services/contato.service';
   templateUrl: './dialog-novo-contato.component.html',
   styleUrls: ['./dialog-novo-contato.component.css']
 })
-export class DialogNovoContatoComponent {
+export class DialogNovoContatoComponent implements OnInit {
 
   contato: Contato = {
     id: '',
@@ -28,16 +27,22 @@ export class DialogNovoContatoComponent {
   // codTipoTel: FormControl = new FormControl();
   // email: FormControl = new FormControl();
 
-  public tipoTel = [
-    { codigo: 0, descricao: 'FIXO' },
-    { codigo: 1, descricao: 'CELULAR' }
-  ];
+  public tiposTel: TipoTel[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<DialogNovoContatoComponent>,
     private service: ContatoService,
     private toast: ToastrService
   ) {}
+
+
+  ngOnInit(): void {
+    this.service.findTiposTel().subscribe(
+      resposta => {
+        this.tiposTel = resposta;
+      }
+    );
+  }
 
   cancelar(): void {
     this.dialogRef.close();

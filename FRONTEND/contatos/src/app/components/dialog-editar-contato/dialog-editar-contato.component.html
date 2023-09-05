@@ -1,1 +1,53 @@
-<p>Deve aparecer {{data.dataKey.id}}</p>
+<div class="container">
+  <form class="form mat-elevation-z4">
+
+      <h1>Editando um contato</h1>
+
+      <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input
+          [(ngModel)]="contato.nome"
+          name="nome"
+          matInput
+          placeholder="Ex. Albert Einstein">
+          <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input
+          name="tel"
+          [(ngModel)]="contato.tel"
+          matInput
+          placeholder="Ex. 42679797">
+          <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+          <mat-label><mat-icon matSuffix>type_specimen</mat-icon>Tipo de Telefone</mat-label>
+          <mat-select [(value)]="contato.codTipoTel">
+            <mat-option *ngFor="let tipo of tiposTel" [value]="tipo.codigo"
+            (click)="escolherTipo(tipo.codigo)"
+            >
+              {{tipo.descricao}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input
+          name="email"
+          type="email"
+          [(ngModel)]="contato.email"
+          matInput
+          placeholder="Ex. fulano@mail.com">
+          <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <button [disabled]="!validaCampos()" (click)="atualizarContato()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Enviar</button>
+      <button (click)="cancelar()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Cancelar</button>
+
+  </form>
+
+</div>

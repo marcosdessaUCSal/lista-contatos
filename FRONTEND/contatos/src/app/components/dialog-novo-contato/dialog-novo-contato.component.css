@@ -34,6 +34,7 @@ button {
 }
 
 mat-icon {
-    opacity: .6;
+    /* opacity: .6; */
+    color: rgb(146, 150, 209);
 }
 
