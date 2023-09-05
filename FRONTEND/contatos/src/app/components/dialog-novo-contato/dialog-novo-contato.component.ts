@@ -22,11 +22,6 @@ export class DialogNovoContatoComponent implements OnInit {
     dataModificacao: ''
   }
 
-  // nome: FormControl = new FormControl(null, Validators.required);
-  // tel: FormControl = new FormControl(null, Validators.required);
-  // codTipoTel: FormControl = new FormControl();
-  // email: FormControl = new FormControl();
-
   public tiposTel: TipoTel[] = [];
 
   constructor(

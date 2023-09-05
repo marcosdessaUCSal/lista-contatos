@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,6 +6,10 @@ import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
 import { DialogEditarContatoComponent } from '../dialog-editar-contato/dialog-editar-contato.component';
 import { DialogNovoContatoComponent } from './../dialog-novo-contato/dialog-novo-contato.component';
+import { ToastrService } from 'ngx-toastr';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Router } from '@angular/router';
+import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-contatos',
@@ -35,8 +39,11 @@ export class ContatosComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: ContatoService,
+    private toast: ToastrService,
+    private router: Router,
     public dialog: MatDialog
   ) { }
+  
 
 
   openDialogCriar(): void {
@@ -77,6 +84,7 @@ export class ContatosComponent implements OnInit, AfterViewInit {
 
 
 
+
   identificaCodTipoTel(cod: number): string {
     let tipo: string = '';
     this.tipoTel.forEach(
@@ -94,8 +102,32 @@ export class ContatosComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
-  algo() {
-    alert('Algo aconteceu')
+  delete(id: number): void {
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      data: {
+        dataKey: {id: id}
+      }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+    console.log('Isto não deveria ter aparecido ainda!')
+    // this.service.removeContato(id).subscribe(() => {
+    //   this.toast.success('Contato removido com sucesso', 'Remoção');
+    // }, ex => {
+    //   this.toast.error(ex.message, 'Erro');
+    // });
+    // this.service.findAll().subscribe(
+    //   resposta => {
+    //     this.ELEMENT_DATA = resposta;
+    //     this.dataSource = new MatTableDataSource<Contato>(this.ELEMENT_DATA);
+    //     this.dataSource.paginator = this.paginator;
+    //   }
+    // );
+    // let currentUrl = this.router.url;
+    // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    //     this.router.navigate([currentUrl]);
+    // });
   }
 
 

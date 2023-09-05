@@ -29,6 +29,7 @@ import { DialogNovoContatoComponent } from './components/dialog-novo-contato/dia
 import { LinksComponent } from './components/links/links.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { DialogEditarContatoComponent } from './components/dialog-editar-contato/dialog-editar-contato.component';
+import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DialogEditarContatoComponent } from './components/dialog-editar-contato
     ContatosComponent,
     LinksComponent,
     DialogNovoContatoComponent,
-    DialogEditarContatoComponent
+    DialogEditarContatoComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,

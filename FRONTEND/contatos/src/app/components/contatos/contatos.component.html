@@ -68,7 +68,7 @@
                 <th mat-header-cell *matHeaderCellDef> Ações </th>
                 <td mat-cell *matCellDef="let element">
                     <i matTooltipPosition="above" matTooltip="Editar" (click)="openDialogEditar(element.id)" class="material-icons edit">edit</i>
-                    <i matTooltipPosition="above" matTooltip="Remover" class="material-icons delete">delete</i>
+                    <i matTooltipPosition="above" matTooltip="Remover" (click)="delete(element.id)" class="material-icons delete">delete</i>
                 </td>
             </ng-container>
 

@@ -49,5 +49,9 @@ export class ContatoService {
     return this.http.put<Contato>(`${API_CONFIG.baseUrl}/contatos`, obj);
   }
 
+  removeContato(id: number): Observable<any> {
+    return this.http.delete<any>(`${API_CONFIG.baseUrl}/contatos/` + id);
+  }
+
 
 }
