@@ -1,5 +1,5 @@
 <mat-card class="container">
-    <h1>Uma tabelinha</h1>
+    <h1>Tabela de Contatos</h1>
 
     <div class="mat-elevation-z8">
 
@@ -8,12 +8,18 @@
             <span>
                 <mat-form-field class="filtro">
                     <mat-label>Filtro</mat-label>
-                    <input matInput (keyup)="filtrando($event)" placeholder="Escreva um nome" #input>
+                    <input matTooltipPosition="above" matTooltip="Selecione o contato aqui" matInput (keyup)="filtrando($event)" placeholder="Escreva um nome" #input>
                 </mat-form-field>
             </span>
             <span class="spacer"></span>
             <span>
-                <button (click)="openDialog()" mat-stroked-button color="primary">Novo Contato</button>
+                <button
+                    (click)="openDialogCriar()"
+                    matTooltip="Criar novo contato"
+                    matTooltipPosition="above"
+                    mat-stroked-button color="primary">
+                    Novo Contato
+                </button>
             </span>
         </div>
 
@@ -61,8 +67,8 @@
             <ng-container matColumnDef="acoes">
                 <th mat-header-cell *matHeaderCellDef> Ações </th>
                 <td mat-cell *matCellDef="let element">
-                    <i (click)="algo()" class="material-icons edit">edit</i>
-                    <i class="material-icons delete">delete</i>
+                    <i matTooltipPosition="above" matTooltip="Editar" (click)="openDialogEditar(element.id)" class="material-icons edit">edit</i>
+                    <i matTooltipPosition="above" matTooltip="Remover" class="material-icons delete">delete</i>
                 </td>
             </ng-container>
 
@@ -70,6 +76,6 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <mat-paginator #paginator [pageSizeOptions]="[2, 4, 6, 10]" showFirstLastButtons></mat-paginator>
+        <mat-paginator #paginator [pageSizeOptions]="[4, 6, 10]" showFirstLastButtons></mat-paginator>
     </div>
 </mat-card>

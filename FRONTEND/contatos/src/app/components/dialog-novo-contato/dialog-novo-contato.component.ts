@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
 
@@ -35,7 +36,7 @@ export class DialogNovoContatoComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogNovoContatoComponent>,
     private service: ContatoService,
-    private router: Router
+    private toast: ToastrService
   ) {}
 
   cancelar(): void {
@@ -51,13 +52,12 @@ export class DialogNovoContatoComponent {
     // console.log('Código do telefone: ', this.contato.codTipoTel)
 
     this.service.salvarContato(this.contato).subscribe( () => {
-      console.log('Consegui salvar')
+      this.toast.success(`Contato ${this.contato.nome} cadastrado com sucesso`, 'Cadastro');
     }, ex => {
-      // console.log(ex);
+      this.toast.error(ex.message, 'Erro');
     });
 
     this.dialogRef.close();
-    this.router.navigate(['contatos']); // Não funciona para dar refresh no componente!
   }
 
   validaCampos(): boolean {

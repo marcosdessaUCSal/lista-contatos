@@ -22,11 +22,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ToastrModule } from 'ngx-toastr';
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { DialogNovoContatoComponent } from './components/dialog-novo-contato/dialog-novo-contato.component';
 import { LinksComponent } from './components/links/links.component';
 import { SobreComponent } from './components/sobre/sobre.component';
+import { DialogEditarContatoComponent } from './components/dialog-editar-contato/dialog-editar-contato.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { SobreComponent } from './components/sobre/sobre.component';
     SobreComponent,
     ContatosComponent,
     LinksComponent,
-    DialogNovoContatoComponent
+    DialogNovoContatoComponent,
+    DialogEditarContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { SobreComponent } from './components/sobre/sobre.component';
     FormsModule,
     NgIf,
     MatDialogModule,
+    MatTooltipModule,
     // ngx-toastr
     ToastrModule.forRoot(
       {
