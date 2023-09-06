@@ -112,11 +112,6 @@ export class ContatosComponent implements OnInit, AfterViewInit {
       this.ngOnInit();
     });
     console.log('Isto não deveria ter aparecido ainda!')
-    // this.service.removeContato(id).subscribe(() => {
-    //   this.toast.success('Contato removido com sucesso', 'Remoção');
-    // }, ex => {
-    //   this.toast.error(ex.message, 'Erro');
-    // });
     // this.service.findAll().subscribe(
     //   resposta => {
     //     this.ELEMENT_DATA = resposta;
