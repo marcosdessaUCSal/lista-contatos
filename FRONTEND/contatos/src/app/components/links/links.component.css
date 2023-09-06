@@ -1,12 +1,10 @@
 mat-tab-group {
     width: 80%;
-    /* background-color: blue; */
 }
 
 .tab {
     width: 80%;
     margin: 1rem auto;
-    /* background-color: white; */
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -21,6 +19,11 @@ h1 {
 
 img {
     height: 26rem;
-    /* width: 100%; */
     margin: 1.5rem auto 1.5rem auto;
+}
+
+.like-icon {
+    width: 20px;
+    margin-right: 8px;
+    filter: invert(11%) sepia(91%) saturate(6864%) hue-rotate(263deg) brightness(67%) contrast(122%);
 }

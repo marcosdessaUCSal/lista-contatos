@@ -48,9 +48,6 @@ export class DialogNovoContatoComponent implements OnInit {
   }
 
   salvarNovoContato() {
-    // console.log('CONTATO:', this.contato);
-    // console.log('Código do telefone: ', this.contato.codTipoTel)
-
     this.service.salvarContato(this.contato).subscribe( () => {
       this.toast.success(`Contato ${this.contato.nome} cadastrado com sucesso`, 'Cadastro');
     }, ex => {
@@ -61,8 +58,6 @@ export class DialogNovoContatoComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    // let validNome = this.nome.valid;
-    // let validTel = this.tel.valid;
     let validNome = this.contato.nome.length >= 3;
     let validTel = this.contato.tel.length >= 7;
     let validCodTipoTel = this.contato.codTipoTel !== -1;

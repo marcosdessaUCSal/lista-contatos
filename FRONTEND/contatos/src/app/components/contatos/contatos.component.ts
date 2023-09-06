@@ -43,28 +43,6 @@ export class ContatosComponent implements OnInit, AfterViewInit {
     private router: Router,
     public dialog: MatDialog
   ) { }
-  
-
-
-  openDialogCriar(): void {
-    const dialogRef = this.dialog.open(DialogNovoContatoComponent);
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    });
-  }
-
-  openDialogEditar(id: number): void {
-    const dialogRef = this.dialog.open(DialogEditarContatoComponent, {
-      data: {
-        dataKey: {id: id}
-      }
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    });
-  }
-
-
 
   ngOnInit(): void {
     this.service.findAll().subscribe(
@@ -83,7 +61,23 @@ export class ContatosComponent implements OnInit, AfterViewInit {
 
 
 
+  openDialogCriar(): void {
+    const dialogRef = this.dialog.open(DialogNovoContatoComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 
+  openDialogEditar(id: number): void {
+    const dialogRef = this.dialog.open(DialogEditarContatoComponent, {
+      data: {
+        dataKey: { id: id }
+      }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 
   identificaCodTipoTel(cod: number): string {
     let tipo: string = '';
@@ -105,27 +99,13 @@ export class ContatosComponent implements OnInit, AfterViewInit {
   delete(id: number): void {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       data: {
-        dataKey: {id: id}
+        dataKey: { id: id }
       }
     });
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
     });
     console.log('Isto não deveria ter aparecido ainda!')
-    // this.service.findAll().subscribe(
-    //   resposta => {
-    //     this.ELEMENT_DATA = resposta;
-    //     this.dataSource = new MatTableDataSource<Contato>(this.ELEMENT_DATA);
-    //     this.dataSource.paginator = this.paginator;
-    //   }
-    // );
-    // let currentUrl = this.router.url;
-    // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-    //     this.router.navigate([currentUrl]);
-    // });
   }
-
-
-
 
 }
